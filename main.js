@@ -16,7 +16,8 @@ import OGCVectorTile from 'ol/source/OGCVectorTile.js';
 
 import LayerSwitcher from 'ol-layerswitcher';
 
-var map = new Map({
+var map = new Map(
+  {
     target: 'map',
     layers: [
         new LayerGroup({
@@ -63,29 +64,24 @@ var map = new Map({
                     title: 'Blue Marble',
                     visible: false,
                     source: new OGCMapTile({
-                      url: 'https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/WebMercatorQuad',
+                      url: 'https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/WorldCRS84Quad',
                     }),
                   }),
-                  new VectorTileLayer({
-                    title: 'Natural Earth',
+                  new TileLayer({
+                    title: 'General Bathymetric Chart of the Oceans',
                     visible: false,
-                    source: new OGCVectorTile({
-                      url: 'https://maps.gnosis.earth/ogcapi/collections/NaturalEarth:cultural:ne_10m_admin_0_countries/tiles/WebMercatorQuad',
-                      format: new MVT(),
+                    source: new OGCMapTile({
+                      url: 'https://maps.gnosis.earth/ogcapi/collections/gebco/map/tiles/WorldCRS84Quad',
                     }),
-                    background: '#d1d1d1',
-                    style: {
-                      'stroke-width': 0.6,
-                      'stroke-color': '#8c8b8b',
-                      'fill-color': '#f7f7e9',
-                    },
-                  })
+                  }),
+
             ]
         })
     ],
     view: new View({
-        center: transform([-0.92, 52.96], 'EPSG:4326', 'EPSG:3857'),
-        zoom: 2
+        center: [0,0],
+        zoom: 2,
+        projection: 'EPSG:4326'
     })
 });
 
