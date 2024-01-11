@@ -13,22 +13,15 @@ import MVT from 'ol/format/MVT.js';
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import OGCMapTile from 'ol/source/OGCMapTile.js';
 import OGCVectorTile from 'ol/source/OGCVectorTile.js';
-
+import Projection from 'ol/proj/Projection.js';
+import Units from 'ol/proj/Units.js';
 import LayerSwitcher from 'ol-layerswitcher';
+
 
 var map = new Map(
   {
     target: 'map',
     layers: [
-        new LayerGroup({
-            'title': 'Base maps',
-            layers: [
-                new TileLayer({
-                    title: 'OSM',
-                    type: 'base',
-                    visible: true,
-                    source: new OSM()
-                }),
                 new TileLayer({
                     title: 'Esri Nat Geo World Map',
                     type: 'base',
@@ -40,40 +33,54 @@ var map = new Map(
                       url:
                         'https://server.arcgisonline.com/ArcGIS/rest/services/' +
                         'NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
-                    }),
-                  }),
-/*                 new TileLayer({
-                    title: 'Esri Tile Layer',
-                    type: 'base',
-                    visible: true,
-                    source: new XYZ({
-                      attributions:
-                        'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/' +
-                        'rest/services/World_Topo_Map/MapServer">ArcGIS</a>',
-                      url:
-                        'https://server.arcgisonline.com/ArcGIS/rest/services/' +
-                        'World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-                    }),
-                  })
- */            ]
+                    })
         }),
          new LayerGroup({
-            title: 'OGC API - Tiles',
+            title: 'OGC API - Tiles Collections',
             layers: [
                 new TileLayer({
-                    title: 'Blue Marble',
+                    title: '<a href="https://maps.gnosis.earth/ogcapi/collections/blueMarble/">Blue Marble Next Generation (2004)</a> by GNOSIS',
                     visible: false,
                     source: new OGCMapTile({
                       url: 'https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/WorldCRS84Quad',
                     }),
                   }),
                   new TileLayer({
-                    title: 'General Bathymetric Chart of the Oceans',
+                    title: '<a href="https://maps.gnosis.earth/ogcapi/collections/gebco"/>General Bathymetric Chart of the Oceans</a> by GNOSIS',
                     visible: false,
                     source: new OGCMapTile({
                       url: 'https://maps.gnosis.earth/ogcapi/collections/gebco/map/tiles/WorldCRS84Quad',
                     }),
                   }),
+/*                   new VectorTileLayer({
+                    title: 'Natural Earth',
+                    visible: false,
+                    source: new OGCVectorTile({
+                      projection: 'EPSG:4326',
+                      url: 'https://maps.gnosis.earth/ogcapi/collections/QuebecCity/tiles/WorldCRS84Quad',
+                      format: new MVT({
+                        dataProjection: 'EPSG:4326' 
+                       }),
+                    }),
+                  })                  
+ *//*                   new VectorTileLayer({
+                    title: 'Natural Earth',
+                    visible: true,
+                    source: new OGCVectorTile({
+                      url: 'https://maps.gnosis.earth/ogcapi/collections/250mContours/tiles/WorldCRS84Quad',
+                      format: new MVT({
+                        defaultDataProjection: 'EPSG:4326' 
+                       }),
+                      projection: 'EPSG:4326',
+                    }),
+                    style: {
+                      'stroke-width': 0.9,
+                      'stroke-color': 'red',
+                      'fill-color': 'black',
+                    },
+                  }) */
+
+                  
 
             ]
         })
