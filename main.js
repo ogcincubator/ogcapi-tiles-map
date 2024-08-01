@@ -40,31 +40,20 @@ var map = new Map(
             layers: [
                 new TileLayer({
                     title: '<a href="https://maps.gnosis.earth/ogcapi/collections/blueMarble/">Blue Marble Next Generation (2004)</a> by GNOSIS',
-                    visible: false,
+                    visible: true,
                     source: new OGCMapTile({
                       url: 'https://maps.gnosis.earth/ogcapi/collections/blueMarble/map/tiles/WorldCRS84Quad',
                     }),
                   }),
                   new TileLayer({
                     title: '<a href="https://maps.gnosis.earth/ogcapi/collections/gebco"/>General Bathymetric Chart of the Oceans</a> by GNOSIS',
-                    visible: false,
+                    visible: true,
                     source: new OGCMapTile({
                       url: 'https://maps.gnosis.earth/ogcapi/collections/gebco/map/tiles/WorldCRS84Quad',
                     }),
                   }),
-/*                   new VectorTileLayer({
-                    title: 'Natural Earth',
-                    visible: false,
-                    source: new OGCVectorTile({
-                      projection: 'EPSG:4326',
-                      url: 'https://maps.gnosis.earth/ogcapi/collections/QuebecCity/tiles/WorldCRS84Quad',
-                      format: new MVT({
-                        dataProjection: 'EPSG:4326' 
-                       }),
-                    }),
-                  })                  
- *//*                   new VectorTileLayer({
-                    title: 'Natural Earth',
+                   new VectorTileLayer({
+                    title: '<a href="https://maps.gnosis.earth/ogcapi/collections/250mContours"/>250 m Contours</a> by GNOSIS',
                     visible: true,
                     source: new OGCVectorTile({
                       url: 'https://maps.gnosis.earth/ogcapi/collections/250mContours/tiles/WorldCRS84Quad',
@@ -78,7 +67,7 @@ var map = new Map(
                       'stroke-color': 'red',
                       'fill-color': 'black',
                     },
-                  }) */
+                  }) 
 
                   
 
