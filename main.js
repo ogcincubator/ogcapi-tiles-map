@@ -36,7 +36,7 @@ var map = new Map(
                     })
         }),
          new LayerGroup({
-            title: 'OGC API - Tiles Collections',
+            title: 'OGC API - Tiles Collections (NOT using Spherical Mercator)',
             layers: [
                 new TileLayer({
                     title: '<a href="https://maps.gnosis.earth/ogcapi/collections/blueMarble/">Blue Marble Next Generation (2004)</a> by GNOSIS',
